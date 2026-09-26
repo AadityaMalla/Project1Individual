@@ -1,0 +1,53 @@
+Script started on 2026-09-26 22:58:58+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="189" LINES="14"]
+[?2004h[0;32m@AadityaMalla [0m➜ [1;34m/workspaces/Project1Individual [0;36m([1;31mmain[0;36m) [0m$ java DriverAM[1Pc *.java
+[?2004l[?2004h[0;32m@AadityaMalla [0m➜ [1;34m/workspaces/Project1Individual [0;36m([1;31mmain[0;36m) [0m$ javac *.java DriverAM
+[?2004l========== 1. WaitlistItem (unit) ==========
+  [PASS] getClientID() is C1
+  [PASS] getQuantity() is 5
+  [PASS] getDate() not null
+  [PASS] setQuantity(8) -> 8
+  toString(): Client=C1, WaitingQty=8
+
+========== 2. Catalog (with Product) ==========
+  [PASS] addProduct(a) is true
+  [PASS] addProduct(b) is true
+  [PASS] addProduct(a) again is false (unique)
+  [PASS] searchForProduct(a.id) returns a
+  [PASS] searchForProduct("P9999") is null
+  [PASS] getAllProducts().size() is 2
+  [PASS] getAllProducts() is a defensive copy
+
+========== 3. Warehouse (integration) ==========
+  addClient  -> C1001
+  addProduct -> P2003
+  [PASS] client id starts with C
+  [PASS] product id starts with P
+  [PASS] returned product id is really in catalog
+  [PASS] addToWishlist(c1, p1, 5) is true
+  [PASS] addToWishlist(bad client) is false
+  [PASS] addToWishlist(bad product) is false
+  -- printAllClients (should show balance) --
+ID=C1001, Name=Ada Lovelace, Address=1 Analytical Way, Balance=$0.00
+  -- printAllProducts --
+ID=P2003, Name=Widget, Price=9.99, Stock=3
+  -- printClientWishlist(C1001) --
+Name=Widget, Price=9.99, WishlistQty=5, Stock=3
+
+  -- Waitlist path (ties in WaitlistItem) --
+  [PASS] addToWaitlist(p1, c1, 5) is true
+  [PASS] addToWaitlist(p1, c1, 2) bumps is true
+  [PASS] addToWaitlist(bad product) is false
+  printProductWaitlist(P2003):
+Client=C1001, WaitingQty=7
+
+  -- Transaction path --
+  [PASS] recordTransaction(c1,...) is true
+  [PASS] recordTransaction(bad client) is false
+  printClientTransactions(C1001):
+[Sat Sep 26 22:59:06 UTC 2026] PAYMENT: Initial deposit ($50.00)
+
+========== RESULT: 22 passed, 0 failed ==========
+[?2004h[0;32m@AadityaMalla [0m➜ [1;34m/workspaces/Project1Individual [0;36m([1;31mmain[0;36m) [0m$ exit
+[?2004lexit
+
+Script done on 2026-09-26 22:59:14+00:00 [COMMAND_EXIT_CODE="0"]
